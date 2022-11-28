@@ -41,12 +41,12 @@
     ];
 
     if(isset($_GET['parking']) && !empty($_GET['parking'])){
-        // $park = $_GET['parking'];
-        // if($park == '1'){
-        //     $hotels = array_filter($hotels, fn($value)=>$value['parking']);
-        // }else{
-        //     $hotels = array_filter($hotels, fn($value)=>!$value['parking']);
-        // }
+        $park = $_GET['parking'];
+        if($park == 'true'){
+            $hotels = array_filter($hotels, fn($value)=>$value['parking']);
+        }else{
+            $hotels = array_filter($hotels, fn($value)=>!$value['parking']);
+        }
         
         // var_dump($hotels);
     };
@@ -87,8 +87,8 @@
                     <label class="mr-sm-2" for="parking">Preferenze sul parcheggio</label>
                     <select class="custom-select mr-sm-2 me-3" id="parking" name="parking">
                         <option value="" selected>Scegli...</option>
-                        <option value="1">Con parcheggio</option>
-                        <option value="0">Senza parcheggio</option>
+                        <option value="true">Con parcheggio</option>
+                        <option value="false">Senza parcheggio</option>
                     </select>
                     <label class="mr-sm-2" for="vote">Preferenze sulla valutazione</label>
                     <select class="custom-select mr-sm-2" id="vote" name="vote">
