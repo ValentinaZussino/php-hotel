@@ -39,7 +39,6 @@
         ],
 
     ];
-
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +54,7 @@
 </head>
 <body>
     <div class="vz_container">
-        <h1>Hotels</h1>
+        <h1 class="pb-5">Hotels</h1>
         <!-- <?php 
         foreach($hotels as $hotel){
             foreach($hotel as $key=>$value){
@@ -63,8 +62,26 @@
             }
         }
         ?> -->
-        <!-- prova con table -->
-        <br><br>
+        <!-- <br><br> -->
+
+        <!-- select -->
+        <form class="mb-5" action="index.php" method="GET">
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                <label class="mr-sm-2" for="type">Preferenze sul parcheggio</label>
+                <select class="custom-select mr-sm-2" id="type" name="parking">
+                    <option selected>Scegli...</option>
+                    <option value="yes">Con parcheggio</option>
+                    <option value="no">Senza parcheggio</option>
+                </select>
+                </div>
+                <div class="col-auto my-1">
+                <button type="submit" class="btn btn-primary">Cerca</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- table -->
         <table class="table table-hover">
             <thead>
                 <tr>
