@@ -39,6 +39,22 @@
         ],
 
     ];
+
+    if(isset($_GET['parking']) && !empty($_GET['parking'])){
+        // $park = $_GET['parking'];
+        // if($park == '1'){
+        //     $hotels = array_filter($hotels, fn($value)=>$value['parking']);
+        // }else{
+        //     $hotels = array_filter($hotels, fn($value)=>!$value['parking']);
+        // }
+        
+        // var_dump($hotels);
+    };
+    if(isset($_GET['vote']) && !empty($_GET['vote'])){
+        $vote = $_GET['vote'];
+        $hotels = array_filter($hotels, fn($value)=>$value['vote'] >= $vote);
+        // var_dump($hotels);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,15 +84,24 @@
         <form class="mb-5" action="index.php" method="GET">
             <div class="form-row align-items-center">
                 <div class="col-auto my-1">
-                <label class="mr-sm-2" for="type">Preferenze sul parcheggio</label>
-                <select class="custom-select mr-sm-2" id="type" name="parking">
-                    <option selected>Scegli...</option>
-                    <option value="yes">Con parcheggio</option>
-                    <option value="no">Senza parcheggio</option>
-                </select>
+                    <label class="mr-sm-2" for="parking">Preferenze sul parcheggio</label>
+                    <select class="custom-select mr-sm-2 me-3" id="parking" name="parking">
+                        <option value="" selected>Scegli...</option>
+                        <option value="1">Con parcheggio</option>
+                        <option value="0">Senza parcheggio</option>
+                    </select>
+                    <label class="mr-sm-2" for="vote">Preferenze sulla valutazione</label>
+                    <select class="custom-select mr-sm-2" id="vote" name="vote">
+                        <option value="" selected>Scegli...</option>
+                        <option value="1">1 stella</option>
+                        <option value="2">2 stelle</option>
+                        <option value="3">3 stelle</option>
+                        <option value="4">4 stelle</option>
+                        <option value="5">5 stelle</option>
+                    </select>
                 </div>
                 <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary">Cerca</button>
+                    <button type="submit" class="btn btn-primary">Cerca</button>
                 </div>
             </div>
         </form>
@@ -100,7 +125,7 @@
                     <td><?php echo $hotel['description'] ?></td>
                     <td><?php echo $hotel['parking'] ?></td>
                     <td><?php echo $hotel['vote'] ?></td>
-                    <td><?php echo $hotel['distance_to_center'] ?></td>
+                    <td><?php echo $hotel['distance_to_center'] .' km'?></td>
                 </tr>
             </tbody>
             <?php } ?>
